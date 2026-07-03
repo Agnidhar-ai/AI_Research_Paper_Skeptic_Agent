@@ -24,6 +24,8 @@ python app.py
 
 Reports are written to `outputs/reports`.
 
+Copy `.env.example` to `.env` when you want to customize the LLM provider, vector store, paths, or chunking settings.
+
 To use the Streamlit UI:
 
 ```powershell
@@ -51,6 +53,7 @@ command is not recognized globally. Keep the launcher window open, then open `ht
 - Streamlit UI and CLI entry point
 - Optional Wikipedia and arXiv external source checks
 - Git + GitHub workflow
+- GitHub Actions test workflow
 
 ## Configuration
 
@@ -64,6 +67,16 @@ VECTOR_STORE_BACKEND=memory
 Use `LLM_PROVIDER=openai` with `OPENAI_API_KEY` for OpenAI-compatible models, or `LLM_PROVIDER=ollama` with `OLLAMA_BASE_URL` for a local Ollama server.
 
 Use `VECTOR_STORE_BACKEND=faiss` or `VECTOR_STORE_BACKEND=chroma` when you want LangChain-backed vector search.
+
+## Tests
+
+Run the test suite locally with:
+
+```powershell
+python -m pytest --basetemp .pytest_tmp
+```
+
+The GitHub Actions workflow runs the same test command on pushes and pull requests to `main`.
 
 The Streamlit app can optionally check Wikipedia and arXiv for background context. These checks are treated as supporting context, not proof of a paper's claims.
 External checks now show whether background sources were found, only partially checked, unavailable, or returned no usable results.

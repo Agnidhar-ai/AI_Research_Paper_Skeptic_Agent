@@ -14,6 +14,12 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
+Copy the example environment file when you want local settings:
+
+```powershell
+Copy-Item .env.example .env
+```
+
 ## LLM Options
 
 Default local heuristic mode:
@@ -45,3 +51,11 @@ VECTOR_STORE_BACKEND=memory
 VECTOR_STORE_BACKEND=faiss
 VECTOR_STORE_BACKEND=chroma
 ```
+
+## Tests
+
+```powershell
+python -m pytest --basetemp .pytest_tmp
+```
+
+GitHub Actions runs the same test command on pushes and pull requests to `main`.
