@@ -1,8 +1,7 @@
 name: Build Command Screen APK
 
 on:
-  push:
-    branches: [commandscreen-apk-build]
+  pull_request:
     paths:
       - 'commandscreen-build/**'
       - '.github/workflows/commandscreen-apk.yml'
